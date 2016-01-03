@@ -1,0 +1,24 @@
+{
+  "name": "nanobiotechbackend",
+  "version": "1.0.0",
+  "description": "backend for nanobiotech lab",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.0.0",
+    "eventemitter3": "^1.1.1",
+    "express": "^4.13.3",
+    "jethro": "^2.6.6",
+    "mongodb": "~2.0",
+    "request": "^2.67.0",
+    "ws": "^0.8.1"
+  },
+  "keywords": [
+    "nanobiotech"
+  ],
+  "author": "Shreyas Hirday",
+  "license": "ISC"
+}
