@@ -29,8 +29,7 @@ app.post('/register', function(req,res){
       code : 8,
       status : "error",
       message_technical : "username and password not provided",
-      message_user : "Login failed, please try again!",
-      date : new Date()
+      message_user : "Login failed, please try again!"
     };
 
     res.status(400).send(JSON.stringify(erro));
@@ -49,8 +48,7 @@ app.post('/register', function(req,res){
         code : 1,
         status : "error",
         message_technical : "password hash failed",
-        message_user : "Registration failed, please try again!",
-        date : new Date()
+        message_user : "Registration failed, please try again!"
       };
       res.status(400).send(JSON.stringify(erro));
     }
@@ -66,8 +64,7 @@ app.post('/register', function(req,res){
           code : 2,
           status : "error",
           message_technical : "error connecting to database",
-          message_user : "Registration failed, please try again!",
-          date : new Date()
+          message_user : "Registration failed, please try again!"
         };
         res.status(400).send(JSON.stringify(erro));
       }
@@ -89,8 +86,7 @@ app.post('/register', function(req,res){
               code : 4,
               status : "error",
               message_technical : "username already exists",
-              message_user : "Username already exists, please choose another one!",
-              date : new Date()
+              message_user : "Username already exists, please choose another one!"
             };
 
             res.status(400).send(JSON.stringify(erro));
@@ -106,8 +102,7 @@ app.post('/register', function(req,res){
                   code : 3,
                   status : "error",
                   message_technical : "error inserting user into db",
-                  message_user : "Registration failed, please try again!",
-                  date : new Date()
+                  message_user : "Registration failed, please try again!"
                 };
 
                 res.status(400).send(JSON.stringify(erro));
@@ -118,8 +113,7 @@ app.post('/register', function(req,res){
                   code : 0,
                   status : "ok",
                   message_technical : "",
-                  message_user : "Registration successful!",
-                  date : new Date()
+                  message_user : "Registration successful!"
 
 
                 }
@@ -168,8 +162,7 @@ app.post('/login', function(req,res){
       code : 8,
       status : "error",
       message_technical : "username and password not provided",
-      message_user : "Login failed, please try again!",
-      date : new Date()
+      message_user : "Login failed, please try again!"
     };
 
     res.status(400).send(JSON.stringify(erro));
@@ -185,8 +178,7 @@ app.post('/login', function(req,res){
         code : 2,
         status : "error",
         message_technical : "error connecting to database",
-        message_user : "Login failed, please try again!",
-        date : new Date()
+        message_user : "Login failed, please try again!"
       };
       res.status(400).send(JSON.stringify(erro));
     }
@@ -201,8 +193,7 @@ app.post('/login', function(req,res){
           code : 5,
           status : "error",
           message_technical : "username does not exist",
-          message_user : "Login failed, please try again!",
-          date : new Date()
+          message_user : "Login failed, please try again!"
         };
         res.status(400).send(JSON.stringify(erro));
       }
@@ -216,8 +207,7 @@ app.post('/login', function(req,res){
                     code : 6,
                     status : "error",
                     message_technical : "failed comparing hashes",
-                    message_user : "Login failed, please try again!",
-                    date : new Date()
+                    message_user : "Login failed, please try again!"
                   };
                 }
                 else{
@@ -227,8 +217,7 @@ app.post('/login', function(req,res){
                       code : 0,
                       status : "ok",
                       message_technical : "",
-                      message_user : "Login success!",
-                      date : new Date()
+                      message_user : "Login success!"
                     };
 
                     res.status(200).send(JSON.stringify(erro));
@@ -238,8 +227,7 @@ app.post('/login', function(req,res){
                       code : 7,
                       status : "error",
                       message_technical : "password did not match",
-                      message_user : "Login failed, please try again!",
-                      date : new Date()
+                      message_user : "Login failed, please try again!"
                     };
                     res.status(400).send(JSON.stringify(erro));
                   }
@@ -258,6 +246,9 @@ app.post('/login', function(req,res){
 }
 
 });
+
+//TODO: Generate Cloud Token somehow
+//TODO: finalize protocol
 
 app.post('/registerDevice',function(req,res){
 
