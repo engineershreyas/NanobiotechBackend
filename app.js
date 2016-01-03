@@ -271,8 +271,7 @@ app.post('/registerDevice',function(req,res){
           code : 2,
           status : "error",
           message_technical : "error connecting to database",
-          message_user : "Device registeration failed, please try again",
-          date : new Date()
+          message_user : "Device registeration failed, please try again"
         };
         res.status(400).send(JSON.stringify(erro));
       }
@@ -300,8 +299,7 @@ app.post('/registerDevice',function(req,res){
                   code : 10,
                   status : "error",
                   message_technical : "error inserting device into database",
-                  message_user : "Device registeration failed, please try again",
-                  date : new Date()
+                  message_user : "Device registeration failed, please try again"
                 };
                 res.status(400).send(JSON.stringify(erro));
               }
@@ -309,9 +307,8 @@ app.post('/registerDevice',function(req,res){
                 var success = {
                   code : 0,
                   status : "ok",
-                  message_technical : "".
-                  message_user : "Device registration succeeded!",
-                  date : new Date()
+                  message_technical : "",
+                  message_user : "Device registration succeeded!"
                 };
                 res.status(200).send(JSON.stringify(success));
               }
