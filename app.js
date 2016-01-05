@@ -32,7 +32,7 @@ app.post('/register', function(req,res){
       message_user : "Login failed, please try again!"
     };
 
-    res.status(400).send(JSON.stringify(erro));
+    res.status(200).send(JSON.stringify(erro));
 
   }
   else{
@@ -50,7 +50,7 @@ app.post('/register', function(req,res){
         message_technical : "password hash failed",
         message_user : "Registration failed, please try again!"
       };
-      res.status(400).send(JSON.stringify(erro));
+      res.status(200).send(JSON.stringify(erro));
     }
     else{
 
@@ -66,7 +66,7 @@ app.post('/register', function(req,res){
           message_technical : "error connecting to database",
           message_user : "Registration failed, please try again!"
         };
-        res.status(400).send(JSON.stringify(erro));
+        res.status(200).send(JSON.stringify(erro));
       }
       else{
         console.log("registration of user: " + un + " succeeded");
@@ -89,7 +89,7 @@ app.post('/register', function(req,res){
               message_user : "Username already exists, please choose another one!"
             };
 
-            res.status(400).send(JSON.stringify(erro));
+            res.status(200).send(JSON.stringify(erro));
 
           }
           else{
@@ -105,7 +105,7 @@ app.post('/register', function(req,res){
                   message_user : "Registration failed, please try again!"
                 };
 
-                res.status(400).send(JSON.stringify(erro));
+                res.status(200).send(JSON.stringify(erro));
 
               }
               else{
@@ -283,7 +283,7 @@ app.post('/registerDevice',function(req,res){
           message_technical : "error connecting to database",
           message_user : "Device registeration failed, please try again"
         };
-        res.status(400).send(JSON.stringify(erro));
+        res.status(200).send(JSON.stringify(erro));
       }
       else{
         var collection = db.collection("users");
@@ -311,7 +311,7 @@ app.post('/registerDevice',function(req,res){
                   message_technical : "error inserting device into database",
                   message_user : "Device registeration failed, please try again"
                 };
-                res.status(400).send(JSON.stringify(erro));
+                res.status(200).send(JSON.stringify(erro));
               }
               else{
                 var success = {
@@ -346,7 +346,7 @@ app.post('/registerDevice',function(req,res){
       date : new Date()
     };
 
-    res.status(400).send(JSON.stringify(erro));
+    res.status(200).send(JSON.stringify(erro));
   }
 
 
