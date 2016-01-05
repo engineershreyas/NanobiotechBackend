@@ -165,7 +165,7 @@ app.post('/login', function(req,res){
       message_user : "Login failed, please try again!"
     };
 
-    res.status(400).send(JSON.stringify(erro));
+    res.status(200).send(JSON.stringify(erro));
 
   }
   else{
@@ -180,7 +180,7 @@ app.post('/login', function(req,res){
         message_technical : "error connecting to database",
         message_user : "Login failed, please try again!"
       };
-      res.status(400).send(JSON.stringify(erro));
+      res.status(200).send(JSON.stringify(erro));
     }
     else{
       var collection = db.collection("users");
@@ -195,7 +195,7 @@ app.post('/login', function(req,res){
             message_technical : "username does not exist",
             message_user : "Login failed, please try again!"
           };
-          res.status(400).send(JSON.stringify(erro));
+          res.status(200).send(JSON.stringify(erro));
         }
         else{
           cursor.each(function(err,doc){
@@ -229,7 +229,7 @@ app.post('/login', function(req,res){
                         message_technical : "password did not match",
                         message_user : "Login failed, please try again!"
                       };
-                      res.status(400).send(JSON.stringify(erro));
+                      res.status(200).send(JSON.stringify(erro));
                     }
                   }
 
