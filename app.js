@@ -186,56 +186,66 @@ app.post('/login', function(req,res){
       var collection = db.collection("users");
 
       var cursor = collection.find( {"username" : un })
-      var count = cursor.count();
+      cursor.count(function(err, count){
 
-      if(count == 0){
-        var erro = {
-          code : 5,
-          status : "error",
-          message_technical : "username does not exist",
-          message_user : "Login failed, please try again!"
-        };
-        res.status(400).send(JSON.stringify(erro));
-      }
-      else{
-        cursor.each(function(err,doc){
-            if(doc != null){
-              var pass = doc["password"];
-              bcrypt.compare(password,pass,function(err, result){
-                if(err){
-                  var erro = {
-                    code : 6,
-                    status : "error",
-                    message_technical : "failed comparing hashes",
-                    message_user : "Login failed, please try again!"
-                  };
-                }
-                else{
-                  if(result === true){
-
+        if(count == 0){
+          var erro = {
+            code : 5,
+            status : "error",
+            message_technical : "username does not exist",
+            message_user : "Login failed, please try again!"
+          };
+          res.status(400).send(JSON.stringify(erro));
+        }
+        else{
+          cursor.each(function(err,doc){
+              if(doc != null){
+                var pass = doc["password"];
+                bcrypt.compare(password,pass,function(err, result){
+                  if(err){
                     var erro = {
-                      code : 0,
-                      status : "ok",
-                      message_technical : "",
-                      message_user : "Login success!"
-                    };
-
-                    res.status(200).send(JSON.stringify(erro));
-                  }
-                  else{
-                    var erro = {
-                      code : 7,
+                      code : 6,
                       status : "error",
-                      message_technical : "password did not match",
+                      message_technical : "failed comparing hashes",
                       message_user : "Login failed, please try again!"
                     };
-                    res.status(400).send(JSON.stringify(erro));
                   }
-                }
-              });
-            }
-        });
-      }
+                  else{
+                    if(result === true){
+
+                      var erro = {
+                        code : 0,
+                        status : "ok",
+                        message_technical : "",
+                        message_user : "Login success!"
+                      };
+
+                      res.status(200).send(JSON.stringify(erro));
+                    }
+                    else{
+                      var erro = {
+                        code : 7,
+                        status : "error",
+                        message_technical : "password did not match",
+                        message_user : "Login failed, please try again!"
+                      };
+                      res.status(400).send(JSON.stringify(erro));
+                    }
+                  }
+
+                  db.close();
+
+                });
+              }
+
+
+
+          });
+        }
+
+
+      });
+
 
     }
 
